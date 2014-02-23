@@ -30,9 +30,6 @@
                   - StepController::STEPS.each.with_index do |step, n|
                     %li{class: step_exists(n) ? '' : 'disabled'}= link_to "#{n}: #{step.humanize}", step_path(n)
 
-            .navbar-right
-              = link_to 'Login', '#', class: 'btn btn-warning navbar-btn'
-
     =render 'layouts/fork_github'
 
 

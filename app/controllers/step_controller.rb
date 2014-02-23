@@ -1,7 +1,8 @@
 class StepController < ApplicationController
 
   STEPS = ['introduction',
-            'what is RoR?',
+            'what is Ruby?',
+            'what is Rails?',
             'news websites', 'reddit', 'hackernews', 'joshuakemp',
             'sites for finding help', 'stackoverflow',
             'sites for learning', 'Rails casts',
@@ -60,7 +61,8 @@ class StepController < ApplicationController
   helper_method :step_exists
 
   def partial_name(step_n)
-    "#{STEPS[step_n].gsub(' ', '_')}"
+    STEPS[step_n].gsub(' ', '_').gsub('?','').downcase
   end
+  helper_method :partial_name
 
 end
