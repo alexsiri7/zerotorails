@@ -1,0 +1,6 @@
+-body = render partial: @step
+
+%h1= yield(:title)
+=body
+
+=link_to 'Continue', step_path(@next)

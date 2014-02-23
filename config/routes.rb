@@ -3,7 +3,9 @@ Zerotorails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'step#index'
+  get '/finished', to: 'step#finished', as: :finished
+  get ':step', to: 'step#step', as: :step
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
