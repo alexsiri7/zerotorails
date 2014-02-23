@@ -5,4 +5,5 @@
   %h1= yield(:title)
   = render partial: "step/steps/#{@step}"
 
-  =link_to 'Continue', step_path(@next)
+  .text-right
+    =link_to 'Continue', step_path(@next), class: 'btn btn-primary'
