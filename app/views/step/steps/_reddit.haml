@@ -1,0 +1,8 @@
+%p
+  Reddit is a news website. It will help you keep up to date with technology news, and with ruby and rails
+  newly released plugins and versions.
+
+  Here are some subreddits that will help you get going:
+  %ul
+    - %w(learnruby ruby rails).each do |subreddit|
+      %li=link_to "#{subreddit} (http://www.reddit.com/r/#{subreddit}/)", "http://www.reddit.com/r/#{subreddit}/"

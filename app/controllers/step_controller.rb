@@ -1,9 +1,38 @@
 class StepController < ApplicationController
 
   STEPS = ['introduction',
+            'what is RoR?',
             'news websites', 'reddit', 'hackernews', 'joshuakemp',
-            'sites for finding help',
-            'sites for learning']
+            'sites for finding help', 'stackoverflow',
+            'sites for learning', 'Rails casts',
+            'Shuhari',
+            'Shu',
+              'Register in github',
+              'Ruby koans',
+              'ruby interactive lesson',
+              'rails interactive lesson',
+              'git interactive lesson',
+              'gems',
+              'bundler',
+            'Ha',
+              'fork this!',
+              'run the tests',
+              'run in your localhost',
+              'first spec change',
+              'commit your change',
+              'style change',
+              'upload it to heroku',
+            'Ri',
+              'First rails project: Dice Roller',
+              'Get it working in git',
+              'Roll dice',
+              'Style with bootstrap',
+              'Add user login',
+              'Save the roll result in the database',
+              'Show rolls for the user',
+              'Show the scoreboard',
+              'Upload to Heroku',
+            'Where to now?']
 
   def index
     redirect_to step_path(0)
