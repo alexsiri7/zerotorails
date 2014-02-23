@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title= content_for?(:title) ? yield(:title) : 'Zero to Rails'
+    %meta{name: 'description', content: "#{content_for?(:description) ? yield(:description) : 'Zero to Rails'}"}
+    = stylesheet_link_tag 'application', media: :all
+    = csrf_meta_tags
+  %body
+    %header
+      %nav.navbar.navbar-inverse
+        .container
+          .navbar-header
+            %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to 'ZeroToRails', root_path, class: 'navbar-brand'
+
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li.dropdown
+                = link_to '#', class: 'dropdown-toggle', 'data-toggle'=>'dropdown' do
+                  All Steps
+                  .caret
+                %ul.dropdown-menu
+                  - (1..100).each do |n|
+                    %li{class: step_exists(n) ? '' : 'disabled'}= link_to n, step_path(n)
+
+            .navbar-right
+              = link_to 'Login', '#', class: 'btn btn-warning navbar-btn'
+
+
+    .container
+      = render 'layouts/messages'
+      = yield
+
+    = javascript_include_tag 'application'
+    = yield(:javascripts)
