@@ -1,28 +1,29 @@
 class StepController < ApplicationController
 
-  STEPS = ['introduction',
-            'what is Ruby?',
-            'what is Rails?',
-            'news websites', 'reddit', 'hackernews', 'joshuakemp',
-            'sites for finding help', 'stackoverflow',
-            'sites for learning', 'Rails casts',
+  STEPS = ['Introduction',
+            'What is Ruby?',
+            'What is Rails?',
+            'News websites', 'Reddit', 'HackerNews', 'You are not alone',
+            'Sites for finding help', 'StackOverflow',
+            'Sites for learning',
+            'Register in GitHub',
             'Shuhari',
             'Shu',
-              'Register in github',
+              'Ruby interactive lessons',
               'Ruby koans',
-              'ruby interactive lesson',
-              'rails interactive lesson',
+              'Rails interactive lessons',
               'git interactive lesson',
               'gems',
               'bundler',
-            'Ha',
               'fork this!',
+              'Rspec interactive lessons',
               'run the tests',
               'run in your localhost',
+              'upload it to heroku',
+            'Ha',
               'first spec change',
               'commit your change',
               'style change',
-              'upload it to heroku',
             'Ri',
               'First rails project: Dice Roller',
               'Get it working in git',
@@ -34,19 +35,21 @@ class StepController < ApplicationController
               'Show the scoreboard',
               'Upload to Heroku',
             'Where to now?']
+  STEP_IDS = STEPS.map { |s| s.parameterize }
 
   def index
-    redirect_to step_path(0)
+    redirect_to step_path(STEP_IDS.first)
   end
 
   def step
-    @step_n = params.require(:step).to_i
+    @step_id = params.require(:step)
+    @step_n = STEP_IDS.index(@step_id)
+    redirect_to :finished and return if @step_n.nil?
     @step = partial_name(@step_n)
     @step_name = STEPS[@step_n]
-    @next = @step_n+1
-    if @step_n > 100
-      redirect_to :finished
-    elsif !step_exists(@step_n)
+    @next = STEP_IDS[@step_n+1]
+
+    if !step_exists(@step_n)
       render :missing
     end
   end

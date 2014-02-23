@@ -2,3 +2,8 @@
   This is a website that is aimed at helping newbie programmers to get into the world of programming Ruby
   on Rails websites, leaving them in a level that will allow them to apply for jobs as junior developers in a Rails
   startup.
+
+%p
+  It currently consists of #{StepController::STEPS.count} steps, of which only
+  #{StepController::STEPS.each.with_index.select{|s, n| step_exists(n)}.count}
+  are already completed. But my aim is to get it to 100.

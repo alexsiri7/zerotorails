@@ -28,7 +28,7 @@
                   .caret
                 %ul.dropdown-menu
                   - StepController::STEPS.each.with_index do |step, n|
-                    %li{class: step_exists(n) ? '' : 'disabled'}= link_to "#{n}: #{step.humanize}", step_path(n)
+                    %li{class: step_exists(n) ? '' : 'disabled'}= link_to "#{n}: #{step.humanize}", step_path(StepController::STEP_IDS[n])
 
     =render 'layouts/fork_github'
 
