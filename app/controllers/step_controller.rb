@@ -6,20 +6,23 @@ class StepController < ApplicationController
             'News websites', 'Reddit', 'HackerNews', 'You are not alone',
             'Sites for finding help', 'StackOverflow',
             'Sites for learning',
-            'Register in GitHub',
             'Shuhari',
             'Shu',
               'Ruby interactive lessons',
+              'Installing Ruby',
               'Ruby koans',
+              'Git interactive lessons',
+              'Register in GitHub',
+              'Fork this!',
+              'Clone the repo',
+              'What are gems?',
+              'bundle install',
+              'Run it in your localhost',
               'Rails interactive lessons',
-              'git interactive lesson',
-              'gems',
-              'bundler',
-              'fork this!',
+              'Run the tests',
               'Rspec interactive lessons',
-              'run the tests',
-              'run in your localhost',
-              'upload it to heroku',
+              'Javascript/Jquery interactive lessons',
+              'Upload it to Heroku',
             'Ha',
               'first spec change',
               'commit your change',
@@ -34,7 +37,8 @@ class StepController < ApplicationController
               'Show rolls for the user',
               'Show the scoreboard',
               'Upload to Heroku',
-            'Where to now?']
+            'Where to now?',
+              'Advanced Git tutorial']
   STEP_IDS = STEPS.map { |s| s.parameterize }
 
   def index
@@ -64,7 +68,7 @@ class StepController < ApplicationController
   helper_method :step_exists
 
   def partial_name(step_n)
-    STEPS[step_n].gsub(' ', '_').gsub('?','').downcase
+    STEPS[step_n].gsub(' ', '_').gsub(/\?|\/|!/,'').downcase
   end
   helper_method :partial_name
 
